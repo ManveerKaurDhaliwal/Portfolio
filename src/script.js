@@ -7,6 +7,7 @@ var typed = new Typed(".text", {
   backDelay: 1000,
   loop: true,
 });
+// show color once click any specific menu 
 let menu = document.querySelector('#menu-icon');
 let navbar = document.querySelector('.navbar');
 let menuItems = document.querySelectorAll('.navbar a');
@@ -21,6 +22,18 @@ menuItems.forEach(item => {
     navbar.classList.remove('active');
   });
 });
+
+function setActive(sectionId) {
+  // Remove active class from all links
+  var links = document.getElementsByClassName('navbar')[0].getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    links[i].classList.remove('active');
+  }
+
+  // Add active class to the clicked link
+  var selectedLink = document.querySelector(`.navbar a[href="#${sectionId}"]`);
+  selectedLink.classList.add('active');
+}
 function sendMail() {
   let parms = {
     name: document.getElementById("name").value,
